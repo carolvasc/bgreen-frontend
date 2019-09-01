@@ -10,8 +10,8 @@ export default class CreateInvestment extends Component {
     super(props);
     this.state = {
       value: { min: 500, max: 1000 },
-      user: null,
-      prevision: null,
+      user: '',
+      prevision: '',
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -21,7 +21,7 @@ export default class CreateInvestment extends Component {
   componentDidMount = async () => {
     await api.get("users")
       .then((response) => {
-        this.setState({ user: response.data });
+        this.setState({ user: response.data }, () => console.log(response.data));
       })
   }
 
@@ -29,16 +29,15 @@ export default class CreateInvestment extends Component {
     const { user, value, prevision } = this.state;
     const { fund } = this.props;
 
-    api.post("investments-users-store", {
-      id_user: user.id,
+    let obj = {
+      id_users: user[0].id,
       tipo_investimento: fund.id,
-      valor_investido: value,
+      valor_investido: value.max,
       previsao: new Date(prevision),
-    }, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
-      }).then(response => <Redirect to='/indicacao' />);
+    }
+
+    console.log(obj)
+    api.post("investments-users-store", obj).then(response => <Redirect to='/indicacao' />);
   }
 
   handleChange(event) {
@@ -76,7 +75,7 @@ export default class CreateInvestment extends Component {
           <Col>
             <Label sm={2}>Previsão</Label>
             <Input type="text" name="prevision" value={this.state.prevision}
-              onChange={this.handleChange} />
+              onChange={this.handleChange} autoComplete="off" />
           </Col>
         </Row>
         <Row style={{ marginTop: '100px' }}>

@@ -28,7 +28,7 @@ export default class UserInvestments extends React.Component {
         <Row>
           {listInvestments.map(investment => {
             return (
-              <Col xs="12" md="6">
+              <Col xs="12" md="6" key={investment.id}>
                 <Card style={{ marginBottom: '10px' }}>
                   <CardHeader>
                     {investment.name}

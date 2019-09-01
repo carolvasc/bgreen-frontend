@@ -35,7 +35,7 @@ export default class Indication extends React.Component {
 
   render() {
     return (
-      <Container class="mt-4">
+      <Container className="mt-4">
         <Row>
           <Col>
             <Jumbotron>
