@@ -1,8 +1,7 @@
 import React from 'react';
 import {
-  Container, Row, Col, Card, CardHeader, CardFooter, CardBody, CardText, UncontrolledCollapse, Jumbotron
+  Container, Row, Col, Card, CardHeader, CardBody, CardText
 } from 'reactstrap';
-import axios from 'axios';
 import api from '../../services/api';
 import './UserInvestments.css';
 
