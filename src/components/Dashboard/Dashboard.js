@@ -64,6 +64,7 @@ export default class Dashboard extends Component{
 
     componentDidMount = async () => {
         const response = await api.get(`profitability-user/${this.props.match.params.id}`);
+        console.log(response);
         this.handleDataProfitability(response.data);
     };
 

@@ -23,11 +23,14 @@ export default class UserInvestments extends React.Component {
 
   render() {
     const { listInvestments } = this.state;
-    console.log(listInvestments);
     return (
       <Container className="mt-4">
         <Row>
-          {listInvestments.map(investment => {
+          {
+            (listInvestments.response) ?
+            <h1>Nenhum investimento</h1>
+            : 
+            listInvestments.map(investment => {
             return (
               <Col xs="12" md="6" key={investment.id}>
                 <Card style={{ marginBottom: '10px' }}>
