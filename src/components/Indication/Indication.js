@@ -2,9 +2,9 @@ import React from 'react';
 import {
   Container, Row, Col, Jumbotron, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input
 } from 'reactstrap';
+import { withRouter } from 'react-router';
 import api from '../../services/api';
-
-export default class Indication extends React.Component {
+class Indication extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +17,9 @@ export default class Indication extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    let change = {}
+    change[event.target.name] = event.target.value;
+    this.setState(change);
   }
 
   toggle() {
@@ -27,10 +29,12 @@ export default class Indication extends React.Component {
   }
 
   createIndication() {
-    api.post("indication", {
-      nome: this.state.name,
-      email: this.state.email
-    }).then(response => alert('Obrigada pela indicação!'));
+    // api.post("indication", {
+    //   nome: this.state.name,
+    //   email: this.state.email
+    // }).then(response => alert('Obrigada pela indicação!'));
+    this.props.history.push('/home');
+    setTimeout(() => alert('Obrigado pelo investimento e indicação! Aguarde nosso retono para a bonificação!'), 1000);
   }
 
   render() {
@@ -68,7 +72,7 @@ export default class Indication extends React.Component {
                   </Form>
                 </ModalBody>
                 <ModalFooter>
-                  <Button color="success" onClick={this.createIndication()}>Salvar</Button>{' '}
+                  <Button color="success" onClick={() => this.createIndication()}>Salvar</Button>{' '}
                   <Button color="danger" onClick={this.toggle}>Cancelar</Button>
                 </ModalFooter>
               </Modal>
@@ -79,3 +83,5 @@ export default class Indication extends React.Component {
     )
   }
 }
+
+export default withRouter(Indication);

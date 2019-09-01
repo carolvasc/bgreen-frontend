@@ -15,7 +15,7 @@ export default class UserInvestments extends React.Component {
   }
 
   componentDidMount = async () => {
-    await api.get("investments")
+    await api.get("investments-users")
       .then((response) => {
         this.setState({ listInvestments: response.data });
       })
