@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Container, Row, Col, Button, Card, CardHeader, CardBody, CardText, UncontrolledCollapse
+  Container, Row, Col, Button, Card, CardFooter, CardBody, CardText, UncontrolledCollapse
 } from 'reactstrap';
 import axios from 'axios';
 import './Funds.css';
@@ -36,6 +36,15 @@ export default class Funds extends React.Component {
                 <UncontrolledCollapse className="mb-10" toggler={`#fund${fund.id}`}>
                   <Card>
                     <CardBody>{fund.description}</CardBody>
+                    <CardFooter>
+                      <CardText>
+                        <Row>
+                          <Col md="4">Rentabilidade: {fund.profitability}</Col>
+                          <Col md="4">Aplicação mínima: R$ {fund.minimalApplication}</Col>
+                          <Col md="4">Data de administração: {fund.administrationFee}</Col>
+                        </Row>
+                      </CardText>
+                    </CardFooter>
                   </Card>
                 </UncontrolledCollapse>
               </Col>
