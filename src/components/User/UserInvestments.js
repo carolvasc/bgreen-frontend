@@ -1,5 +1,10 @@
 import React from 'react';
-import { Card, Button, CardBody, CardFooter, CardText } from 'reactstrap';
+import {
+  Container, Row, Col, Card, CardHeader, CardFooter, CardBody, CardText, UncontrolledCollapse, Jumbotron
+} from 'reactstrap';
+import axios from 'axios';
+import api from '../../services/api';
+import './UserInvestments.css';
 
 export default class UserInvestments extends React.Component {
   constructor(props) {
@@ -9,8 +14,8 @@ export default class UserInvestments extends React.Component {
     }
   }
 
-  componentDidMount() {
-    axios.get("https://bgreen-anbima-api.herokuapp.com/api/investments-users")
+  componentDidMount = async () => {
+    await api.get("investments")
       .then((response) => {
         this.setState({ listInvestments: response.data });
       })
@@ -19,21 +24,37 @@ export default class UserInvestments extends React.Component {
   render() {
     const { listInvestments } = this.state;
     return (
-      <Container>
+      <Container className="mt-4">
         <Row>
           {listInvestments.map(investment => {
-            <Card>
-              <CardBody>{fund.description}</CardBody>
-              <CardFooter>
-                <CardText>
-                  <Row>
-                    <Col md="4">Rentabilidade: {fund.profitability}</Col>
-                    <Col md="4">Aplicação mínima: R$ {fund.minimalApplication}</Col>
-                    <Col md="4">Data de administração: {fund.administrationFee}</Col>
-                  </Row>
-                </CardText>
-              </CardFooter>
-            </Card>
+            return (
+              <Col xs="12" md="6">
+                <Card style={{ marginBottom: '10px' }}>
+                  <CardHeader>
+                    {investment.name}
+                  </CardHeader>
+                  <CardBody>
+                    <Row>
+                      <Col xs="6" md="6" style={{ borderRight: '1px solid lightgrey' }}>
+                        {investment.description}
+                      </Col>
+                      <Col xs="6" md="6">
+                        <CardText>
+                          <span className="font-weight">Rentabilidade:</span> {investment.profitability}
+                        </CardText>
+                        <CardText>
+                          <span className="font-weight">Aplicação mínima: </span>
+                          R$ {investment.valcota}
+                        </CardText>
+                        <CardText>
+                          <span className="font-weight"> Taxa de administração: </span>{investment.administrationFee}
+                        </CardText>
+                      </Col>
+                    </Row>
+                  </CardBody>
+                </Card>
+              </Col>
+            )
           })}
         </Row>
       </Container>
