@@ -10,7 +10,7 @@ export default class UserInvestments extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:3001/investments")
+    axios.get("https://bgreen-anbima-api.herokuapp.com/api/investments-users")
       .then((response) => {
         this.setState({ listInvestments: response.data });
       })
