@@ -16,7 +16,7 @@ export default class Investments extends Component{
 
 
   render(){
-    const { createInvestment, fundSelected } = this.state;
+    const { createInvestment, fundSelected} = this.state;
 
 
     return(
