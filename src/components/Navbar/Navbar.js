@@ -31,6 +31,7 @@ export default class Navbar extends React.Component {
         </button>
         <Link to="/meus-investimentos">Meus investimentos</Link>
         <Link to="/investir">Investir</Link>
+        <Link to="/indicacao">Indicaçao</Link>
         <Link to="/">Perfil</Link>
       </div>
 
