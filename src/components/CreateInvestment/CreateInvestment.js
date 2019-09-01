@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Badge, Button, Input, Label } from 'reactstrap';
 import InputRange from 'react-input-range';
-import { Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router';
 import api from '../../services/api';
 
-export default class CreateInvestment extends Component {
+class CreateInvestment extends Component {
 
   constructor(props) {
     super(props);
@@ -21,7 +21,7 @@ export default class CreateInvestment extends Component {
   componentDidMount = async () => {
     await api.get("users")
       .then((response) => {
-        this.setState({ user: response.data }, () => console.log(response.data));
+        this.setState({ user: response.data });
       })
   }
 
@@ -36,8 +36,8 @@ export default class CreateInvestment extends Component {
       previsao: new Date(prevision),
     }
 
-    console.log(obj)
-    api.post("investments-users-store", obj).then(response => <Redirect to='/indicacao' />);
+    api.post("investments-users-store", obj)
+      .then(() => this.props.history.push('/indicacao'));
   }
 
   handleChange(event) {
@@ -87,3 +87,5 @@ export default class CreateInvestment extends Component {
     )
   }
 }
+
+export default withRouter(CreateInvestment);
