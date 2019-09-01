@@ -38,7 +38,7 @@ export default class UserInvestments extends React.Component {
                     <Row>
                       <Col xs="6" md="6" style={{ borderRight: '1px solid lightgrey' }}>
                         {investment.description}
-                        <Link to={`/${investment.id}`}>visualizar</Link>
+                        <Link to={`/home/${investment.id}`}>visualizar</Link>
                       </Col>
                       <Col xs="6" md="6">
                         <CardText>

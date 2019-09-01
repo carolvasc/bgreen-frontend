@@ -8,8 +8,8 @@ import Dashboard from '../components/Dashboard/Dashboard';
 
 export default props =>
   <Switch>
-    <Route path='/:id'  component={Dashboard} />
-    <Route path='/' exact component={UserInvestments} />
+    <Route path='/home' exact component={UserInvestments} />
+    <Route path='/home/:id'  component={Dashboard} />
     <Route path='/investir' component={Investments} />
     <Route path='/indicacao' component={Indication} />
     <Redirect from='*' to='/' />
