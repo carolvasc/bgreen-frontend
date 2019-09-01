@@ -5,6 +5,7 @@ import {
 import axios from 'axios';
 import api from '../../services/api';
 import './UserInvestments.css';
+import { Link } from 'react-router-dom';
 
 export default class UserInvestments extends React.Component {
   constructor(props) {
@@ -37,6 +38,7 @@ export default class UserInvestments extends React.Component {
                     <Row>
                       <Col xs="6" md="6" style={{ borderRight: '1px solid lightgrey' }}>
                         {investment.description}
+                        <Link to={`/meus-investimentos/${investment.id}`}>visualizar</Link>
                       </Col>
                       <Col xs="6" md="6">
                         <CardText>
