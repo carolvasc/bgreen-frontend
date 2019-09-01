@@ -12,5 +12,5 @@ export default props =>
     <Route path='/home/:id'  component={Dashboard} />
     <Route path='/investir' component={Investments} />
     <Route path='/indicacao' component={Indication} />
-    <Redirect from='*' to='/' />
+    <Redirect from='*' to='/home' />
   </Switch>

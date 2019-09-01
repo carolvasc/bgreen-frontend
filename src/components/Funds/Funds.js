@@ -33,7 +33,7 @@ export default class Funds extends React.Component {
           {listFunds.map((fund, index) => {
             if (index < 4) {
               return (
-                <Col xs="12" md={{ size: 6 }}>
+                <Col xs="12" md={{ size: 6 }} key={`fund${fund.id}`}>
                   <Button outline color="primary" size="lg" id={`fund${fund.id}`} block className="card-button mb-10" style={{ borderRadius: 0 }}>
                     {fund.name}
                   </Button>
@@ -66,13 +66,13 @@ export default class Funds extends React.Component {
                   <hr className="my-2" />
                   <Row>
                     <Col md="4">
-                      <span class="font-weight">Rentabilidade: </span> {currentFund.profitability}
+                      <span className="font-weight">Rentabilidade: </span> {currentFund.profitability}
                     </Col>
                     <Col md="4">
-                      <span class="font-weight">Aplicação mínima: </span> R$ {currentFund.valcota}
+                      <span className="font-weight">Aplicação mínima: </span> R$ {currentFund.valcota}
                     </Col>
                     <Col md="4">
-                      <span class="font-weight">Taxa de administração: </span> {currentFund.administrationFee}
+                      <span className="font-weight">Taxa de administração: </span> {currentFund.administrationFee}
                     </Col>
                   </Row>
                 </Jumbotron>

@@ -29,7 +29,7 @@ export default class Navbar extends React.Component {
       <div id="mySidenav" className="sidenav">
         <button type="button" className="closebtn color" onClick={() => this.closeNav()}>&times;
         </button>
-        <Link to="/">Meus investimentos</Link>
+        <Link to="/home">Meus investimentos</Link>
         <Link to="/investir">Investir</Link>
         <Link to="/indicacao">Indicaçao</Link>
       </div>
