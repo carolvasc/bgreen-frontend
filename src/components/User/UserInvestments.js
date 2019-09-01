@@ -15,7 +15,7 @@ export default class UserInvestments extends React.Component {
   }
 
   componentDidMount = async () => {
-    await api.get("investments")
+    await api.get("investments-users")
       .then((response) => {
         this.setState({ listInvestments: response.data });
       })
@@ -23,6 +23,7 @@ export default class UserInvestments extends React.Component {
 
   render() {
     const { listInvestments } = this.state;
+    console.log(listInvestments);
     return (
       <Container className="mt-4">
         <Row>
@@ -37,7 +38,7 @@ export default class UserInvestments extends React.Component {
                     <Row>
                       <Col xs="6" md="6" style={{ borderRight: '1px solid lightgrey' }}>
                         {investment.description}
-                        <Link to={`/home/${investment.id}`}>visualizar</Link>
+                        <Link to={`/home/${investment.id_users}`}>visualizar</Link>
                       </Col>
                       <Col xs="6" md="6">
                         <CardText>
