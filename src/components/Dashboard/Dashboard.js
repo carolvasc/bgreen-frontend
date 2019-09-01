@@ -8,6 +8,7 @@ import { Container, Row, Col, Badge, ButtonDropdown, DropdownToggle, DropdownMen
 export default class Dashboard extends Component{
     state = {
         dropdownOpen: false,
+        userData: '',
         data: {
           labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
           datasets: [
@@ -37,8 +38,14 @@ export default class Dashboard extends Component{
       }
 
     handleDataProfitability = response => {
+        console.log(response);
         let arr = [];
         let dataRend = [];
+        let userData = {
+            name: response[0].name,
+            previsao: response[0].previsao,
+            valorInvestido: response[0].valor_investido
+        }
     
         response.map(rendimento => {
           arr.push(parseFloat(rendimento.valor_rendimento));
@@ -48,11 +55,11 @@ export default class Dashboard extends Component{
         this.setState(state => {
           state.data.datasets[0].data = arr;
           state.data.labels = dataRend;
+          state.userData = userData;
     
           return{
             ...state
           }
-    
         })
       }
 
@@ -69,27 +76,14 @@ export default class Dashboard extends Component{
     };
 
     render(){
+        const { userData } = this.state;
         return(
             <Container>
                 <Row>
                     <Col>
-                        <h1>Olá <Badge color="secondary">Fulano</Badge></h1>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={() => this.toggle()}>
-                            <DropdownToggle caret>
-                                Button Dropdown
-                            </DropdownToggle>
-                            <DropdownMenu>
-                            <DropdownItem header>Header</DropdownItem>
-                            <DropdownItem disabled>Action</DropdownItem>
-                            <DropdownItem>Another Action</DropdownItem>
-                            <DropdownItem divider />
-                            <DropdownItem>Another Action</DropdownItem>
-                            </DropdownMenu>
-                        </ButtonDropdown>
+                        <h1>Olá <Badge color="secondary">{userData.name}</Badge></h1>
+                        <h4>Valor investido: {userData.valorInvestido}</h4>
+                        <span>previsão: {userData.previsao}</span>
                     </Col>
                 </Row>
                 <Row>
