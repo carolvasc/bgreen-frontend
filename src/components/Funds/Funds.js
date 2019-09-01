@@ -25,12 +25,7 @@ export default class Funds extends React.Component {
     const { listFunds } = this.state;
 
     return (
-      <Container>
-        <Card>
-          <CardBody>
-            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-          </CardBody>
-        </Card>
+      <Container className="mt-4">
         <Row>
           {listFunds.map(fund => {
             return (
@@ -47,10 +42,8 @@ export default class Funds extends React.Component {
             )
           })}
         </Row>
-        <Row>
-          <Col xs="12" md={{ size: 6, offset: 3 }}>
-            <Button outline color="warning" block>Investir</Button>
-          </Col>
+        <Row className="mt-5">
+          <Button outline color="warning" className="float-right">Investir</Button>
         </Row>
       </Container>
     )

@@ -32,9 +32,18 @@
   margin-left: 50px;
 }
 
+.color {
+  background-color: transparent;
+  color: #ffffff8f;
+  outline: 0;
+  border: none;
+}
+
 #main {
   transition: margin-left .5s;
   padding: 16px;
+  height: 76px;
+  background-color: lightgrey;
 }
 
 @media screen and (max-height: 450px) {
